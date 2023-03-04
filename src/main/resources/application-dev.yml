@@ -12,8 +12,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
-
 logging:
   level:
-    org.springframework.web: DEBUG
-    ma.pfe: DEBUG
+    org.springframework.web: debug
+    ma.geo.local: DEBUG
+    org.hibernate: ERROR

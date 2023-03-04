@@ -1,13 +1,11 @@
 package ma.pfe.services;
 
 import ma.pfe.dtos.StudentDTO;
-import ma.pfe.entities.StudentEntity;
 import ma.pfe.mappers.StudentMapper;
 import ma.pfe.repositories.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,25 +21,28 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Long save(StudentDTO dto) {
-        LOGGER.debug("start method save");
-        return studentRepository.save(studentMapper.convertToEntity(dto));
+        LOGGER.debug("start method save dto : {} ",dto);
+        StudentDTO re = studentMapper.convertToDto(studentRepository.save(studentMapper.convertToEntity(dto)));
+        return re.getId();
     }
 
     @Override
     public Boolean update(StudentDTO dto) {
-        LOGGER.debug("start method update");
-        return studentRepository.update(studentMapper.convertToEntity(dto));
+        LOGGER.debug("start method update dto : {} ",dto);
+        StudentDTO re = studentMapper.convertToDto(studentRepository.save(studentMapper.convertToEntity(dto)));
+        return true;
     }
 
     @Override
     public Boolean delete(Long id) {
-        LOGGER.debug("start method delete");
-        return studentRepository.delete(id);
+        LOGGER.debug("start method delete id : {} ",id);
+        studentRepository.deleteById(id);
+        return true;
     }
 
     @Override
     public List<StudentDTO> selectAll() {
-        LOGGER.debug("start method selectAll");
-        return studentMapper.convertTosDtos(studentRepository.selectAll());
+        LOGGER.debug("start method select All");
+        return studentMapper.convertTosDtos(studentRepository.findAll());
     }
 }
