@@ -38,14 +38,6 @@ public class StudentEntity {
 //        this.studentId = studentId;
 //    }
 
-    @Override
-    public String toString() {
-        return "StudentEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
     public String getName() {
         return name;
     }
@@ -53,12 +45,6 @@ public class StudentEntity {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name="rue",column = @Column(name = "rue_student")),
-            @AttributeOverride(name="avenue",column = @Column(name = "avenue_student"))
-    })
 
     public Adresse getAdresse() {
         return adresse;
@@ -68,4 +54,18 @@ public class StudentEntity {
         this.adresse = adresse;
     }
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="rue",column = @Column(name = "rue_student")),
+            @AttributeOverride(name="avenue",column = @Column(name = "avenue_student"))
+    })
+
+    @Override
+    public String toString() {
+        return "StudentEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", adresse=" + adresse +
+                '}';
+    }
 }
