@@ -8,6 +8,7 @@ spring:
     username: root
     password: root
   jpa:
+    open-in-view: true
     database: mysql
     show-sql: true
     hibernate:
