@@ -22,7 +22,7 @@ public class StudentEntity {
 
     @Column(name = "Student_name")
     private String name;
-    private Adresse adresse;
+    private Address address;
 
     public long getId() {
         return id;
@@ -46,12 +46,12 @@ public class StudentEntity {
         this.name = name;
     }
 
-    public Adresse getAdresse() {
-        return adresse;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Embedded
@@ -65,7 +65,7 @@ public class StudentEntity {
         return "StudentEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", adresse=" + adresse +
+                ", address=" + address +
                 '}';
     }
 }

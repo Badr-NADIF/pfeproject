@@ -3,7 +3,7 @@ package ma.pfe.entities;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Adresse {
+public class Address {
 
     private String rue;
 
@@ -37,7 +37,7 @@ public class Adresse {
 
     @Override
     public String toString() {
-        return "Adresse{" +
+        return "Address{" +
                 "rue='" + rue + '\'' +
                 ", avenue='" + avenue + '\'' +
                 ", number='" + number + '\'' +
