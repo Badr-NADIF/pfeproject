@@ -5,23 +5,31 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class StudentId implements Serializable{
+public class StudentIdEntity implements Serializable{
     private Long id;
     private String code;
 
-    public StudentId(Long id, String code) {
+    public StudentIdEntity(Long id, String code) {
         this.id = id;
         this.code = code;
     }
 
-    public StudentId() {
+    public StudentIdEntity() {
+    }
+
+    @Override
+    public String toString() {
+        return "StudentIdEntity{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StudentId studentId = (StudentId) o;
+        StudentIdEntity studentId = (StudentIdEntity) o;
         return Objects.equals(id, studentId.id) && Objects.equals(code, studentId.code);
     }
 

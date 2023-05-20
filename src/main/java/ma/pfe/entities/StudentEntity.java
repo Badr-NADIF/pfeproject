@@ -1,6 +1,7 @@
 package ma.pfe.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 // @Embeddable @EmbeddedId
 @Entity
@@ -12,31 +13,37 @@ import javax.persistence.*;
 public class StudentEntity {
 
 //    @EmbeddedId
-    @Id
-    @Column(name = "Student_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    // @Id
+    // @Column(name = "Student_id")
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    // private long id;
 
-//     @EmbeddedId
-//     private StudentId studentId;
-
+    @EmbeddedId
+    private StudentIdEntity studentId;
     @Column(name = "Student_name")
     private String name;
     private Address address;
+    @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "list_courses_students")
+    private List<CourseEntity> courses;
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
+
+    public StudentIdEntity getStudentId() {
+        return studentId;
     }
 
-//    public StudentId getStudentId() {
-//        return studentId;
-//    }
-//    public void setStudentId(StudentId studentId) {
-//        this.studentId = studentId;
-//    }
+    public void setStudentId(StudentIdEntity studentId) {
+        this.studentId = studentId;
+    }
+
+
+    // public long getId() {
+    //     return id;
+    // }
+    // public void setId(long id) {
+    //     this.id = id;
+    // }
+
 
     public String getName() {
         return name;
@@ -50,6 +57,7 @@ public class StudentEntity {
         return address;
     }
 
+
     public void setAddress(Address address) {
         this.address = address;
     }
@@ -60,12 +68,29 @@ public class StudentEntity {
             @AttributeOverride(name="avenue",column = @Column(name = "avenue_student"))
     })
 
+    public List<CourseEntity> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<CourseEntity> courses) {
+        this.courses = courses;
+    }
+
+    // @Override
+    // public String toString() {
+    //     return "StudentEntity{" +
+    //             "id=" + id +
+    //             ", name='" + name + '\'' +
+    //             ", address=" + address +
+    //             '}';
+
     @Override
     public String toString() {
         return "StudentEntity{" +
-                "id=" + id +
+                "studentId=" + studentId +
                 ", name='" + name + '\'' +
                 ", address=" + address +
+                ", courses=" + courses +
                 '}';
     }
 }
