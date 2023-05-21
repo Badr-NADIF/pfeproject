@@ -27,6 +27,10 @@ public class StudentEntity {
     @JoinTable(name = "list_courses_students")
     private List<CourseEntity> courses;
 
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "class_id")
+    private ClassEntity studentClass;
+
 
     public StudentIdEntity getStudentId() {
         return studentId;
@@ -76,6 +80,14 @@ public class StudentEntity {
         this.courses = courses;
     }
 
+    public ClassEntity getStudentClass() {
+        return studentClass;
+    }
+
+    public void setStudentClass(ClassEntity studentClass) {
+        this.studentClass = studentClass;
+    }
+
     // @Override
     // public String toString() {
     //     return "StudentEntity{" +
@@ -91,6 +103,7 @@ public class StudentEntity {
                 ", name='" + name + '\'' +
                 ", address=" + address +
                 ", courses=" + courses +
+                ", studentClass=" + studentClass +
                 '}';
     }
 }

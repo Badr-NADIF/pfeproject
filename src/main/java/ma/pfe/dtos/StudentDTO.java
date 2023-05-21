@@ -1,5 +1,6 @@
 package ma.pfe.dtos;
 
+
 import java.util.List;
 
 public class StudentDTO {
@@ -9,11 +10,30 @@ public class StudentDTO {
     private AddressDTO address;
     private List<CourseDTO> courses;
 
+    private ClassDTO studentClass;
 
+    public ClassDTO getStudentClass() {
+        return studentClass;
+    }
+
+    public void setStudentClass(ClassDTO studentClass) {
+        this.studentClass = studentClass;
+    }
 //    @Override
 //    public String toString() {
 //        return "StudentDTO{" +
 //                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", courses=" + courses +
+//                ", address=" + address +
+//                ", studentClass=" + studentClass +
+//            '}';
+//}
+
+//    @Override
+//    public String toString() {
+//        return "StudentDTO{" +
+//                "studentId=" + studentId +
 //                ", name='" + name + '\'' +
 //                ", courses=" + courses +
 //                ", address=" + address +
@@ -25,8 +45,9 @@ public class StudentDTO {
         return "StudentDTO{" +
                 "studentId=" + studentId +
                 ", name='" + name + '\'' +
-                ", courses=" + courses +
                 ", address=" + address +
+                ", courses=" + courses +
+                ", studentClass=" + studentClass +
                 '}';
     }
 
